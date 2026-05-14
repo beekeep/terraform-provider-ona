@@ -37,9 +37,12 @@ data "ona_runner" "example" {
   id = ona_runner.example.id
 }
 
-data "ona_runner_token" "example" {
-  runner_id = ona_runner.example.id
-}
+# Disabled in CI: CreateRunnerToken returns 401 unauthenticated for
+# user-principal API keys. Re-enable once the required auth scope is
+# confirmed. See https://github.com/combor/terraform-provider-ona/actions/runs/25887549490
+# data "ona_runner_token" "example" {
+#   runner_id = ona_runner.example.id
+# }
 
 data "ona_runner_environment_classes" "example" {
   runner_id = ona_runner.example.id
